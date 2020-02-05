@@ -1,4 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Currency Convertor 
+
+The currency convertor is an example of using React to create a basic application
+
+## Features
+### Dynamic Currency Conversion
+The user can change the values of from and to currencies to dynamically view the value of the other currency.  
+### [TODO] Fetch Currency Exchange rates from exchange APIs
+### [TODO] Allow to add more currencies in the system 
+### [TODO] Allow users to add stock exchange indices
+### [TODO] Allow users to view stock exchange values
+
+
+## Running & Testing App
 
 ## Available Scripts
 
