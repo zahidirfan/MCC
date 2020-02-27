@@ -22,20 +22,20 @@ export default class Currency extends Component {
         this.callApi = this.callApi.bind(this);
         this.changeRate = this.changeRate.bind(this);
 
-        this.callApi();
+        this.callApi('from');
     }
 
-    callApi(state){
+    callApi(handler){
         fetch("https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency="
         +this.state.from_currency+"&to_currency="+this.state.to_currency+"&apikey=CZ2Y7RO5LHTWH41I")
         .then((response) => response.json())
-        .then(json => this.changeRate(json['Realtime Currency Exchange Rate']['5. Exchange Rate']))
+        .then(json => this.changeRate(json['Realtime Currency Exchange Rate']['5. Exchange Rate'], handler))
     }
 
-    changeRate(newRate){
+    changeRate(newRate, handler){
         this.setState({
             rate: newRate
-        }, () => this.fromChangeHandler(this.state.from_value)
+        }, handler == 'from' ? () => this.fromChangeHandler(this.state.from_value) : () => this.toChangeHandler(this.state.to_value)
         );
         
     }
@@ -56,14 +56,14 @@ export default class Currency extends Component {
     toCurrencyHandler(value){
         this.setState({
             to_currency: value
-        }, () => this.callApi()
+        }, () => this.callApi('to')
         );
     }
 
     fromCurrencyHandler(value){
         this.setState({
             from_currency : value
-        }, () => this.callApi()
+        }, () => this.callApi('from')
         );
     }
 
