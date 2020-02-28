@@ -27,18 +27,14 @@ export default class CurrencySelector extends Component{
             to_value : value,
             from_value: value/ this.state.rate
         });
-        console.log(this.state.rate)
-        console.log(this.state.to_value)
-        console.log(this.state.from_value)
+        
     }
     fromChangeHandler(value){
         this.setState({
             from_value : value,
             to_value : value * this.state.rate
         });
-        console.log(this.state.rate)
-        console.log(this.state.to_value)
-        console.log(this.state.from_value)
+       
     }
 
     toSelectHandler(value){
